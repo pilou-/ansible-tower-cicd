@@ -27,6 +27,9 @@
   get_url:
     url: "{{ tower_setup_release_url }}"
     dest: /var/tmp
+    owner: "{{ ansible_user }}"
+    group: nogroup
+    mode: 0400
   register: tower_download
   tags:
     - tower-install
@@ -35,6 +38,9 @@
   unarchive:
     src: "/var/tmp/{{ tower_setup_archive }}"
     dest: /var/tmp
+    owner: "{{ ansible_user }}"
+    group: nogroup
+    mode: u=rX,go=
     remote_src: yes
   when: tower_download is changed
   tags:
