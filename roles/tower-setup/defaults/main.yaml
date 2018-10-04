@@ -29,8 +29,7 @@ tower_setup_license_configure: False
 tower_setup_license_file: /root/tower-license.json
 
 tower_setup_inventory_file: /etc/tower-setup/tower-setup-inventory.yaml
-# TODO: Is there a better way ?
-tower_setup_inventory: "{{ lookup('file', playbook_dir + '/../inventory.yaml') | from_yaml }}"
+tower_setup_inventory: "{{ lookup('file', 'inventory.yaml') | from_yaml }}"
 
 tower_setup_cli_config:
   host: "http://localhost"
